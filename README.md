@@ -2,15 +2,15 @@
 PL/SQL Window Functions project: analyzing supermarket sales, customer behavior, and growth trends using SQL analytics
 
 
-*1. Problem Definition*
+**1. Problem Definition**
 
-*Business Context*
+**Business Context**
 A supermarket chain in Kigali with multiple branches across Rwanda sells groceries, beverages, and household products.
 
-*Data Challenge*
+**Data Challenge**
 Management needs insights into sales performance across regions, customer purchase behavior, and growth trends. They want to know the top products per region, track month-to-month growth, and segment customers based on spending.
 
-*Expected Outcome*
+**Expected Outcome**
 
 Identify top-selling products per region/quarter.
 
@@ -22,7 +22,7 @@ Segment customers into quartiles.
 
 Compute 3-month moving averages for trend analysis.
 
-*2. Success Criteria*
+**2. Success Criteria**
 
 This project delivers 5 measurable goals:
 
@@ -36,7 +36,7 @@ Customer quartiles → NTILE(4)
 
 3-month moving averages → AVG() OVER()
 
-*3. Database Schema*
+**3. Database Schema**
 Tables
 
 customers
@@ -57,7 +57,7 @@ customers (1)───< (∞) transactions (∞) >───(1) products
 
 📌 See schema.sql for table creation.
 
-*4. Window Functions Implementations*
+**4. Window Functions Implementations**
 
 
 *Ranking – Top 5 Products per Region/Quarter*
@@ -86,7 +86,7 @@ WHERE sales_rank <= 5;
 
 Insight: Shows the top 5 best-selling products in each region per quarter.
 
-*Aggregate – Running Monthly Sales Totals*
+**Aggregate – Running Monthly Sales Totals**
 
 
 SELECT TO_CHAR(sale_date, 'YYYY-MM') AS month,
@@ -100,7 +100,7 @@ ORDER BY month;
 
 Insight: Tracks how sales accumulate month by month.
 
-*Navigation – Month-over-Month Growth*
+**Navigation – Month-over-Month Growth**
 
 
 SELECT TO_CHAR(sale_date, 'YYYY-MM') AS month,
@@ -118,7 +118,7 @@ ORDER BY month;
 
 Insight: Calculates growth percentage compared to the previous month.
 
-*Distribution – Customer Quartiles*
+**Distribution – Customer Quartiles**
 
 
 SELECT customer_id, SUM(amount) AS total_spent,
@@ -131,7 +131,7 @@ GROUP BY customer_id;
 
 Insight: Segments customers into quartiles (top spenders, high-mid, low-mid, lowest).
 
-*Moving Averages – 3-Month Average*
+**Moving Averages – 3-Month Average**
 
 
 SELECT TO_CHAR(sale_date, 'YYYY-MM') AS month,
@@ -147,9 +147,9 @@ ORDER BY month;
 
 Insight: Smooths sales trends using a 3-month moving average.
 
-5. *Results Analysis*
+**5. Results Analysis**
 
-Descriptive – What happened?
+**Descriptive – What happened?**
 
 Sales peaked in March with strong beverage sales in Kigali.
 
@@ -157,7 +157,7 @@ Coffee Beans was the top product in multiple regions.
 
 25% of customers contributed over 60% of sales.
 
-Diagnostic – Why?
+**Diagnostic – Why?**
 
 Kigali outperformed due to higher customer density.
 
@@ -165,7 +165,7 @@ Seasonal promotions boosted beverage sales.
 
 High spenders were consistent repeat buyers.
 
-Prescriptive – What next?
+**Prescriptive – What next?**
 
 Expand promotions to underperforming regions.
 
@@ -173,7 +173,7 @@ Launch loyalty programs for top quartile customers.
 
 Develop campaigns to retain lower quartile customers.
 
-*6. References*
+**6. References**
 
 Oracle Docs – SQL Analytics and Window Functions
 
